@@ -1,5 +1,4 @@
 module.exports = {
-  prefix: 'tw-',
   darkMode: 'media',
   content: [
     './src/**/*.{ts,tsx,html}'
