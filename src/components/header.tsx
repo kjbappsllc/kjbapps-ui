@@ -1,12 +1,14 @@
+
 import { MenuAlt3Icon } from '@heroicons/react/outline'
 import Typewriter from 'typewriter-effect'
 import { appGradientTxt } from '../app.styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faInstagram, faLinkedin, faTwitter, IconDefinition } from '@fortawesome/free-brands-svg-icons'
-import { useEffect, useRef, useState } from 'react'
 import { useOnScreen } from '../hooks/on-screen'
 import { XIcon } from '@heroicons/react/solid'
 import { useHideOnClickOutside } from '../hooks/hide-on-click-outside'
+import SpaceBg from '../assets/spaceBg.jpg'
+import LogoWhite from '../assets/logoWhite.png'
 
 type CSS = React.CSSProperties
 
@@ -25,7 +27,7 @@ const shadowOverlayStyle: CSS = {
 }
 
 const spaceBg: CSS = {
-  backgroundImage: 'url(assets/spaceBg.jpg)',
+  backgroundImage: `url(${SpaceBg})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   backgroundAttachment: 'fixed',
@@ -81,7 +83,7 @@ const Nav = () => {
 
   return (
     <div ref={navRef} className="px-8 py-10 w-full flex items-center z-20 md:px-12">
-      <img className="h-14 inline" src="assets/logoWhite.png" />
+      <img className="h-14 inline" src={LogoWhite} />
       <button onClick={() => setVisibility(true)} className={`${isOnScreen ? 'bg-transparent' : 'bg-black'} cursor-pointer px-4 py-2 rounded-sm right-4 fixed flex items-center hover:text-white text-red-600 transition duration-200`}>
         <span className='font-medium hidden text-sm mr-4 md:inline transform duration-500'>MENU</span>
         <div className='w-8 h-8'>
@@ -145,7 +147,7 @@ const Content = () => {
       </div>
       <div className='flex flex-col space-y-4 mt-14 sm:space-y-0 sm:flex-row sm:space-x-8'>
         {buttons.map((name, index) => (
-          <button key={index + 'button'} className={`rounded-sm py-3 px-10 sm:px-6 bg-transparent border-2 text-white border-white hover:bg-white hover:text-zinc-900 transition duration-300`}>
+          <button key={index + 'button'} className={`rounded-sm py-3 px-10 sm:px-6 bg-transparent border text-white border-white hover:bg-white hover:text-zinc-900 transition duration-300`}>
             {name}
           </button>
         ))}
