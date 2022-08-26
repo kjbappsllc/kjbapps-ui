@@ -1,21 +1,21 @@
-import { RefObject, useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react';
 
 export const useOnScreen = (options: IntersectionObserverInit) => {
+  const navRef: React.RefObject<HTMLElement> = useRef(null);
 
-  const navRef: React.RefObject<HTMLElement> = useRef(null)
+  const [isOnScreen, setIsOnScreen] = useState(true);
 
-  const [isOnScreen, setIsOnScreen] = useState(true)
-
-  const intersectionCB: IntersectionObserverCallback = ([entry]) => setIsOnScreen(entry.isIntersecting)
+  const intersectionCB: IntersectionObserverCallback = ([entry]) => setIsOnScreen(entry.isIntersecting);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(intersectionCB, options)
-    if (navRef.current) observer.observe(navRef.current)
+    const observer = new IntersectionObserver(intersectionCB, options);
+    const node = navRef.current;
+    if (node) observer.observe(node);
     return () => {
-      if (navRef.current) observer.unobserve(navRef.current)
-      observer.disconnect()
-    }
-  }, [navRef])
+      if (node) observer.unobserve(node);
+      observer.disconnect();
+    };
+  });
 
-  return { isOnScreen, navRef }
-}
+  return { isOnScreen, navRef };
+};
