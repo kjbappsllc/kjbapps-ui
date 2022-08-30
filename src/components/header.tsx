@@ -8,18 +8,10 @@ import { XIcon } from '@heroicons/react/solid';
 import { useHideOnClickOutside } from '../hooks/hide-on-click-outside';
 import SpaceBg from '../assets/spaceBg.jpg';
 import LogoWhite from '../assets/logoWhite.png';
+import { createLinkConfig, LinkConfig, newTabProps } from '../app.view-model';
+import ResumePDF from '../assets/kb-resume.pdf'
 
 type CSS = React.CSSProperties;
-
-interface IconConfig {
-  icon: IconDefinition;
-  link: string;
-}
-
-interface NavConfig {
-  name: string;
-  link: string;
-}
 
 const shadowOverlayStyle: CSS = {
   background: '-webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%)',
@@ -43,27 +35,12 @@ const Background = () => {
 };
 
 const Nav = () => {
-  const navItems: NavConfig[] = [
-    {
-      name: 'Home',
-      link: '#',
-    },
-    {
-      name: 'About',
-      link: '#',
-    },
-    {
-      name: 'Services',
-      link: '#',
-    },
-    {
-      name: 'Works',
-      link: '#',
-    },
-    {
-      name: 'Contact',
-      link: '#',
-    },
+  const navItems: LinkConfig<string>[] = [
+    createLinkConfig('Home', '#'),
+    createLinkConfig('About', '#'),
+    createLinkConfig('Services', '#'),
+    createLinkConfig('Works', '#'),
+    createLinkConfig('Contact', '#'),
   ];
   const { isOnScreen, navRef: rNavRef } = useOnScreen({
     root: null,
@@ -85,9 +62,8 @@ const Nav = () => {
       <img alt="logo" className="h-14 inline" src={LogoWhite} />
       <button
         onClick={() => setVisibility(true)}
-        className={`${
-          isOnScreen ? 'bg-transparent' : 'bg-black'
-        } cursor-pointer px-4 py-2 rounded-sm right-4 fixed flex items-center hover:text-white text-red-600 transition duration-200`}
+        className={`${isOnScreen ? 'bg-transparent' : 'bg-black'
+          } cursor-pointer px-4 py-2 rounded-sm right-4 fixed flex items-center hover:text-white text-red-600 transition duration-200`}
       >
         <span className="font-medium hidden text-sm mr-4 md:inline transform duration-500">MENU</span>
         <div className="w-8 h-8">
@@ -96,14 +72,10 @@ const Nav = () => {
       </button>
       <nav
         ref={nodeRef}
-        className={`${
-          isVisible ? menuToOpenStyles : menuToCloseStyles
-        } fixed right-0 top-0 h-full w-72 bg-zinc-900 transition p-10 flex duration-500 overflow-y-auto overflow-x-hidden`}
+        className={`${isVisible ? menuToOpenStyles : menuToCloseStyles} fixed right-0 top-0 h-full w-72 bg-zinc-900 transition p-10 flex duration-500 overflow-y-auto overflow-x-hidden`}
       >
         <div
-          className={`${
-            isVisible ? menuContentOpenStyles : menuContentCloseStyles
-          } flex flex-grow flex-col transition-all`}
+          className={`${isVisible ? menuContentOpenStyles : menuContentCloseStyles} flex flex-grow flex-col transition-all`}
         >
           <div className="justify-between flex w-full items-center mt-2 mb-12">
             <div className="text-xs uppercase text-red-600 font-semibold">Navigation</div>
@@ -117,11 +89,14 @@ const Nav = () => {
           <ul className="space-y-6">
             {navItems.map((item, index) => (
               <li key={index + 'navItem'} className="text-white text-lg">
-                <a href={item.link}>{item.name}</a>
+                <a href={item.link}>{item.value}</a>
               </li>
             ))}
           </ul>
         </div>
+        <div className='h-7 bg-red-600 text-white w-full flex self-end justify-center items-center absolute bottom-0 right-0 left-0'>
+            Under Construction
+          </div>
       </nav>
     </div>
   );
@@ -129,13 +104,19 @@ const Nav = () => {
 
 const Content = () => {
   const adjectives = ['Creative', 'Dedicated', 'Ambitious', 'Committed', 'Enthusiastic', 'Passionate'];
-  const icons: IconConfig[] = [
-    { icon: faFacebookF, link: '#' },
-    { icon: faTwitter, link: '#' },
-    { icon: faInstagram, link: '#' },
-    { icon: faLinkedin, link: 'https://www.linkedin.com/in/keyshawn-butts/' },
+  const icons: LinkConfig<IconDefinition>[] = [
+    createLinkConfig(faFacebookF, '#'),
+    createLinkConfig(faTwitter, '#'),
+    createLinkConfig(faInstagram, '#'),
+    createLinkConfig(faTwitter, '#'),
+    createLinkConfig(faLinkedin, 'https://www.linkedin.com/in/keyshawn-butts/', true)
   ];
-  const buttons = ['View Resume', 'Contact Me'];
+
+  const buttons: LinkConfig<string>[] = [
+    createLinkConfig('View Resume', ResumePDF, true),
+    createLinkConfig('Contact Me', '#')
+  ]
+
   return (
     <div className="w-full relative flex flex-col items-center flex-grow justify-center xs:items-start xs:px-8 sm:justify-start sm:pt-24 sm:px-12 lg:container lg:mx-auto lg:px-36">
       <h3 className="text-sm xs:text-md md:text-lg text-zinc-500 font-bold mb-4">Hello.</h3>
@@ -163,29 +144,32 @@ const Content = () => {
         />
       </div>
       <div className="flex flex-col space-y-4 mt-14 sm:space-y-0 sm:flex-row sm:space-x-8">
-        {buttons.map((name, index) => (
-          <button
+        {buttons.map((btn, index) => (
+          <a
             key={index + 'button'}
-            className={`rounded-sm py-3 px-10 sm:px-6 bg-transparent border text-white border-white hover:bg-white hover:text-zinc-900 transition duration-300`}
+            className={`rounded-sm py-3 px-10 sm:px-6 bg-transparent border text-white border-white hover:bg-white hover:text-zinc-900 transition duration-300 cursor-pointer`}
+            href={btn.link}
+            {...(btn.newTab && { ...newTabProps })}
           >
-            {name}
-          </button>
+            {btn.value}
+          </a>
         ))}
       </div>
       <ul className="absolute hidden xs:inline-block inset-y-24 right-6 lg:right-0 space-y-3">
         {icons.map((config, index) => (
           <li key={index + 'icon'}>
-            <a href={config.link}>
+            <a href={config.link} {...(config.newTab && { ...newTabProps })}>
               <FontAwesomeIcon
-                icon={config.icon}
+                icon={config.value}
                 inverse
                 className="w-4 h-4 p-2 rounded-full md:border-2 border-white hover:bg-white hover:text-zinc-900 cursor-pointer transition duration-300"
               />
             </a>
           </li>
-        ))}
+        )
+        )}
       </ul>
-    </div>
+    </div >
   );
 };
 
