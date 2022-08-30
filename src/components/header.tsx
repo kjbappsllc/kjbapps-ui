@@ -72,12 +72,10 @@ const Nav = () => {
       </button>
       <nav
         ref={nodeRef}
-        className={`${isVisible ? menuToOpenStyles : menuToCloseStyles
-          } fixed right-0 top-0 h-full w-72 bg-zinc-900 transition p-10 flex duration-500 overflow-y-auto overflow-x-hidden`}
+        className={`${isVisible ? menuToOpenStyles : menuToCloseStyles} fixed right-0 top-0 h-full w-72 bg-zinc-900 transition p-10 flex duration-500 overflow-y-auto overflow-x-hidden`}
       >
         <div
-          className={`${isVisible ? menuContentOpenStyles : menuContentCloseStyles
-            } flex flex-grow flex-col transition-all`}
+          className={`${isVisible ? menuContentOpenStyles : menuContentCloseStyles} flex flex-grow flex-col transition-all`}
         >
           <div className="justify-between flex w-full items-center mt-2 mb-12">
             <div className="text-xs uppercase text-red-600 font-semibold">Navigation</div>
@@ -96,6 +94,9 @@ const Nav = () => {
             ))}
           </ul>
         </div>
+        <div className='h-7 bg-red-600 text-white w-full flex self-end justify-center items-center absolute bottom-0 right-0 left-0'>
+            Under Construction
+          </div>
       </nav>
     </div>
   );
