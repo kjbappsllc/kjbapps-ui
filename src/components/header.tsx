@@ -7,7 +7,7 @@ import { useOnScreen } from '../hooks/on-screen';
 import { XIcon } from '@heroicons/react/solid';
 import { useHideOnClickOutside } from '../hooks/hide-on-click-outside';
 import SpaceBg from '../assets/spaceBg.jpg';
-import LogoWhite from '../assets/logoWhite.png';
+import Logo from '../assets/logoFull.png';
 import { createLinkConfig, LinkConfig, newTabProps } from '../app.view-model';
 import ResumePDF from '../assets/kb-resume.pdf'
 
@@ -59,14 +59,14 @@ const Nav = () => {
 
   return (
     <div ref={navRef} className="px-8 py-10 w-full flex items-center z-20 md:px-12">
-      <img alt="logo" className="h-14 inline" src={LogoWhite} />
+      <img alt="logo" className="h-16 inline" src={Logo} />
       <button
         onClick={() => setVisibility(true)}
         className={`${isOnScreen ? 'bg-transparent' : 'bg-black'
           } cursor-pointer px-4 py-2 rounded-sm right-4 fixed flex items-center hover:text-white text-red-600 transition duration-200`}
       >
         <span className="font-medium hidden text-sm mr-4 md:inline transform duration-500">MENU</span>
-        <div className="w-8 h-8">
+        <div className="w-9 h-9">
           <MenuAlt3Icon className="w-full h-full" fill="white" stroke="white" />
         </div>
       </button>
@@ -108,7 +108,6 @@ const Content = () => {
     createLinkConfig(faFacebookF, '#'),
     createLinkConfig(faTwitter, '#'),
     createLinkConfig(faInstagram, '#'),
-    createLinkConfig(faTwitter, '#'),
     createLinkConfig(faLinkedin, 'https://www.linkedin.com/in/keyshawn-butts/', true)
   ];
 
@@ -147,7 +146,7 @@ const Content = () => {
         {buttons.map((btn, index) => (
           <a
             key={index + 'button'}
-            className={`rounded-sm py-3 px-10 sm:px-6 bg-transparent border text-white border-white hover:bg-white hover:text-zinc-900 transition duration-300 cursor-pointer`}
+            className={`rounded-sm py-3 px-10 sm:px-6 bg-transparent border-2 text-white border-white hover:bg-white hover:text-red-600 transition duration-300 cursor-pointer`}
             href={btn.link}
             {...(btn.newTab && { ...newTabProps })}
           >
