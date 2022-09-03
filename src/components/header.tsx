@@ -117,7 +117,7 @@ const Content = () => {
   ]
 
   return (
-    <div className="w-full relative flex flex-col items-center flex-grow justify-center xs:items-start xs:px-8 sm:justify-start sm:pt-24 sm:px-12 lg:container lg:mx-auto lg:px-36">
+    <div className="w-full relative flex flex-col items-center flex-grow justify-center xs:items-start xs:px-8 sm:px-12 lg:container lg:mx-auto lg:px-36">
       <h3 className="text-sm xs:text-md md:text-lg text-zinc-500 font-bold mb-4">Hello.</h3>
       <div className="text-white text-2xl xs:text-4xl md:text-5xl lg:text-6xl">
         <Typewriter
@@ -142,7 +142,7 @@ const Content = () => {
           }}
         />
       </div>
-      <div className="flex flex-col space-y-4 mt-14 sm:space-y-0 sm:flex-row sm:space-x-8">
+      <div className="flex flex-col space-y-4 mt-14 xs:space-y-0 xs:flex-row xs:space-x-8">
         {buttons.map((btn, index) => (
           <a
             key={index + 'button'}
@@ -168,6 +168,7 @@ const Content = () => {
         )
         )}
       </ul>
+      <div className='w-full h-36'/>
     </div >
   );
 };
