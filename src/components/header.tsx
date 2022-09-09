@@ -2,7 +2,7 @@ import { MenuAlt3Icon } from '@heroicons/react/outline';
 import Typewriter from 'typewriter-effect';
 import { appGradientTxt } from '../app.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faGithub, faInstagram, faLinkedin, faTwitter, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faGithub, faLinkedin, faTwitter, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { useOnScreen } from '../hooks/on-screen';
 import { XIcon } from '@heroicons/react/solid';
 import { useHideOnClickOutside } from '../hooks/hide-on-click-outside';
