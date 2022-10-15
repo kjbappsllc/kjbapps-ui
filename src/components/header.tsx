@@ -105,8 +105,6 @@ const Nav = () => {
 const Content = () => {
   const adjectives = ['Creative', 'Dedicated', 'Ambitious', 'Committed', 'Enthusiastic', 'Passionate'];
   const icons: LinkConfig<IconDefinition>[] = [
-    createLinkConfig(faFacebookF, '#'),
-    createLinkConfig(faTwitter, '#'),
     createLinkConfig(faLinkedin, 'https://www.linkedin.com/in/keyshawn-butts/', true),
     createLinkConfig(faGithub, 'https://github.com/kjbappsllc', true)
   ];
