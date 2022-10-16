@@ -6,13 +6,13 @@ import { Section } from './components/section';
 export const App = () => {
   return (
     <div className="h-full">
-      <Section sectionId='header'>
+      <Section sectionId="header">
         <Header />
       </Section>
-      <Section sectionId='about'>
+      <Section sectionId="about">
         <About />
       </Section>
-      <Section sectionId='contact'>
+      <Section sectionId="contact">
         <Contact />
       </Section>
     </div>

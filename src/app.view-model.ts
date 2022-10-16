@@ -1,17 +1,16 @@
-
 export interface LinkConfig<T> {
   value: T;
   link: string;
   newTab: boolean;
 }
 
-export const createLinkConfig = <T>(value: T, link: string, newTab: boolean = false): LinkConfig<T> => ({
+export const createLinkConfig = <T>(value: T, link: string, newTab = false): LinkConfig<T> => ({
   value,
   link,
-  newTab
-})
+  newTab,
+});
 
 export const newTabProps = {
-  target: "_blank",
-  rel: "noopener noreferrer"
-}
+  target: '_blank',
+  rel: 'noopener noreferrer',
+};

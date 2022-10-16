@@ -2,14 +2,14 @@ import { MenuAlt3Icon } from '@heroicons/react/outline';
 import Typewriter from 'typewriter-effect';
 import { appGradientTxt } from '../app.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faGithub, faLinkedin, faTwitter, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { useOnScreen } from '../hooks/on-screen';
 import { XIcon } from '@heroicons/react/solid';
 import { useHideOnClickOutside } from '../hooks/hide-on-click-outside';
 import SpaceBg from '../assets/spaceBg.jpg';
 import Logo from '../assets/logoFull.png';
 import { createLinkConfig, LinkConfig, newTabProps } from '../app.view-model';
-import ResumePDF from '../assets/kb-resume.pdf'
+import ResumePDF from '../assets/kb-resume.pdf';
 
 type CSS = React.CSSProperties;
 
@@ -62,8 +62,9 @@ const Nav = () => {
       <img alt="logo" className="h-16 inline" src={Logo} />
       <button
         onClick={() => setVisibility(true)}
-        className={`${isOnScreen ? 'bg-transparent' : 'bg-black'
-          } cursor-pointer px-4 py-2 rounded-sm right-4 fixed flex items-center hover:text-white text-red-600 transition duration-200`}
+        className={`${
+          isOnScreen ? 'bg-transparent' : 'bg-black'
+        } cursor-pointer px-4 py-2 rounded-sm right-4 fixed flex items-center hover:text-white text-red-600 transition duration-200`}
       >
         <span className="font-medium hidden text-sm mr-4 md:inline transform duration-500">MENU</span>
         <div className="w-9 h-9">
@@ -72,10 +73,14 @@ const Nav = () => {
       </button>
       <nav
         ref={nodeRef}
-        className={`${isVisible ? menuToOpenStyles : menuToCloseStyles} fixed right-0 top-0 h-full w-72 bg-zinc-900 transition p-10 flex duration-500 overflow-y-auto overflow-x-hidden`}
+        className={`${
+          isVisible ? menuToOpenStyles : menuToCloseStyles
+        } fixed right-0 top-0 h-full w-72 bg-zinc-900 transition p-10 flex duration-500 overflow-y-auto overflow-x-hidden`}
       >
         <div
-          className={`${isVisible ? menuContentOpenStyles : menuContentCloseStyles} flex flex-grow flex-col transition-all`}
+          className={`${
+            isVisible ? menuContentOpenStyles : menuContentCloseStyles
+          } flex flex-grow flex-col transition-all`}
         >
           <div className="justify-between flex w-full items-center mt-2 mb-12">
             <div className="text-xs uppercase text-red-600 font-semibold">Navigation</div>
@@ -94,9 +99,9 @@ const Nav = () => {
             ))}
           </ul>
         </div>
-        <div className='h-7 bg-red-600 text-white w-full flex self-end justify-center items-center absolute bottom-0 right-0 left-0'>
-            Under Construction
-          </div>
+        <div className="h-7 bg-red-600 text-white w-full flex self-end justify-center items-center absolute bottom-0 right-0 left-0">
+          Under Construction
+        </div>
       </nav>
     </div>
   );
@@ -106,13 +111,13 @@ const Content = () => {
   const adjectives = ['Creative', 'Dedicated', 'Ambitious', 'Committed', 'Enthusiastic', 'Passionate'];
   const icons: LinkConfig<IconDefinition>[] = [
     createLinkConfig(faLinkedin, 'https://www.linkedin.com/in/keyshawn-butts/', true),
-    createLinkConfig(faGithub, 'https://github.com/kjbappsllc', true)
+    createLinkConfig(faGithub, 'https://github.com/kjbappsllc', true),
   ];
 
   const buttons: LinkConfig<string>[] = [
     createLinkConfig('View Resume', ResumePDF, true),
-    createLinkConfig('Contact Me', '#')
-  ]
+    createLinkConfig('Contact Me', '#'),
+  ];
 
   return (
     <div className="w-full relative flex flex-col items-center flex-grow justify-center xs:items-start xs:px-8 sm:px-12 lg:container lg:mx-auto lg:px-36">
@@ -163,11 +168,10 @@ const Content = () => {
               />
             </a>
           </li>
-        )
-        )}
+        ))}
       </ul>
-      <div className='w-full h-36'/>
-    </div >
+      <div className="w-full h-36" />
+    </div>
   );
 };
 

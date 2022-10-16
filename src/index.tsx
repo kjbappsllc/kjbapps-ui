@@ -7,7 +7,7 @@ const container = document.getElementById('root');
 
 if (container != void 0) {
   if (process.env.NODE_ENV === 'production') {
-    setupAnalytics()
+    setupAnalytics();
   }
   console.log('Binding To Root');
   const root = createRoot(container);

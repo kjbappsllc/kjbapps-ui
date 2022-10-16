@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface SectionProps extends React.PropsWithChildren {
   sectionId: string;
@@ -9,5 +9,5 @@ export const Section = ({ children, sectionId }: SectionProps) => {
     <section className="w-full" id={sectionId}>
       {children}
     </section>
-  )
-}
+  );
+};
